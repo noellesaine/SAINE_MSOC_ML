@@ -1,0 +1,6 @@
+Step,Rows,Athletes
+"Rows in sheet (sessions x rostered athletes)",1794,26
+"Complete rows (all analysis variables present)",818,23
+"Complete rows, primary athletes",376,11
+"Excluded primary athletes with < 10 complete sessions (ID 47)",375,10
+"Excluded sessions with PLI = 0 (export artifact; n = 3)",372,10

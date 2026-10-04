@@ -1,0 +1,61 @@
+Strategy,Fold,HeldOutAthlete,Model,Hyperparameters,Inner_LOAO_loss
+Primary: within-fold MRMR top 3,1,8,SVM,C=47.47; KS=3.459,0.0843373493975904
+Primary: within-fold MRMR top 3,1,8,AdaBoostM2,NumCycles=33; LearnRate=0.9913; MaxSplits=19,0.0963855421686747
+Primary: within-fold MRMR top 3,1,8,SVR,C=172.7; KS=12.83; Eps=0.004513,0.0336631427153999
+Primary: within-fold MRMR top 3,2,28,SVM,C=152; KS=5.089,0.0993975903614458
+Primary: within-fold MRMR top 3,2,28,AdaBoostM2,NumCycles=15; LearnRate=0.9414; MaxSplits=9,0.102409638554217
+Primary: within-fold MRMR top 3,2,28,SVR,C=544.9; KS=13.31; Eps=0.03694,0.0342012092918797
+Primary: within-fold MRMR top 3,3,32,SVM,C=118.2; KS=3.914,0.0993975903614458
+Primary: within-fold MRMR top 3,3,32,AdaBoostM2,NumCycles=23; LearnRate=0.9805; MaxSplits=9,0.0963855421686747
+Primary: within-fold MRMR top 3,3,32,SVR,C=206.7; KS=9.823; Eps=0.0776,0.0343884091496336
+Primary: within-fold MRMR top 3,4,34,SVM,C=10; KS=3,0.0876132930513595
+Primary: within-fold MRMR top 3,4,34,AdaBoostM2,NumCycles=100; LearnRate=0.9389; MaxSplits=7,0.0906344410876133
+Primary: within-fold MRMR top 3,4,34,SVR,C=128.1; KS=7.205; Eps=0.1137,0.0299879576924793
+Primary: within-fold MRMR top 3,5,35,SVM,C=994.7; KS=8.479,0.0906344410876133
+Primary: within-fold MRMR top 3,5,35,AdaBoostM2,NumCycles=480; LearnRate=0.1189; MaxSplits=7,0.0966767371601208
+Primary: within-fold MRMR top 3,5,35,SVR,C=100; KS=10; Eps=0.07426,0.0301753870889363
+Primary: within-fold MRMR top 3,6,36,SVM,C=10; KS=3,0.102102102102102
+Primary: within-fold MRMR top 3,6,36,AdaBoostM2,NumCycles=14; LearnRate=0.9963; MaxSplits=19,0.108108108108108
+Primary: within-fold MRMR top 3,6,36,SVR,C=100; KS=10; Eps=0.0765,0.0336514366247347
+Primary: within-fold MRMR top 3,7,38,SVM,C=10; KS=3,0.0993975903614458
+Primary: within-fold MRMR top 3,7,38,AdaBoostM2,NumCycles=300; LearnRate=0.3; MaxSplits=10,0.105421686746988
+Primary: within-fold MRMR top 3,7,38,SVR,C=899.8; KS=23.15; Eps=0.1014,0.0370598417395822
+Primary: within-fold MRMR top 3,8,39,SVM,C=932.4; KS=7.419,0.0828571428571429
+Primary: within-fold MRMR top 3,8,39,AdaBoostM2,NumCycles=13; LearnRate=0.9136; MaxSplits=15,0.0828571428571429
+Primary: within-fold MRMR top 3,8,39,SVR,C=274.7; KS=10.26; Eps=0.07392,0.0308579474648884
+Primary: within-fold MRMR top 3,9,41,SVM,C=248.2; KS=5.108,0.0835820895522388
+Primary: within-fold MRMR top 3,9,41,AdaBoostM2,NumCycles=491; LearnRate=0.05193; MaxSplits=8,0.0985074626865672
+Primary: within-fold MRMR top 3,9,41,SVR,C=181.3; KS=12.61; Eps=0.006229,0.0306671780642055
+Primary: within-fold MRMR top 3,10,43,SVM,C=16.28; KS=3.427,0.0941176470588235
+Primary: within-fold MRMR top 3,10,43,AdaBoostM2,NumCycles=116; LearnRate=0.1921; MaxSplits=20,0.0882352941176471
+Primary: within-fold MRMR top 3,10,43,SVR,C=204.9; KS=14.92; Eps=0.00193,0.0333748772044469
+Sensitivity: no heart rate (sRPE + TD),1,8,SVM,C=1.763; KS=0.55,0.231927710843373
+Sensitivity: no heart rate (sRPE + TD),1,8,AdaBoostM2,NumCycles=237; LearnRate=0.01839; MaxSplits=2,0.22289156626506
+Sensitivity: no heart rate (sRPE + TD),1,8,SVR,C=48.66; KS=26.08; Eps=0.1361,0.193128157409563
+Sensitivity: no heart rate (sRPE + TD),2,28,SVM,C=745.7; KS=35.22,0.25
+Sensitivity: no heart rate (sRPE + TD),2,28,AdaBoostM2,NumCycles=10; LearnRate=0.02132; MaxSplits=3,0.22289156626506
+Sensitivity: no heart rate (sRPE + TD),2,28,SVR,C=24.19; KS=24.47; Eps=0.003884,0.187489996410138
+Sensitivity: no heart rate (sRPE + TD),3,32,SVM,C=0.1; KS=3,0.240963855421687
+Sensitivity: no heart rate (sRPE + TD),3,32,AdaBoostM2,NumCycles=195; LearnRate=0.9127; MaxSplits=1,0.240963855421687
+Sensitivity: no heart rate (sRPE + TD),3,32,SVR,C=4.548; KS=5.277; Eps=0.003461,0.199114761831249
+Sensitivity: no heart rate (sRPE + TD),4,34,SVM,C=148; KS=8.422,0.241691842900302
+Sensitivity: no heart rate (sRPE + TD),4,34,AdaBoostM2,NumCycles=30; LearnRate=0.008378; MaxSplits=2,0.199395770392749
+Sensitivity: no heart rate (sRPE + TD),4,34,SVR,C=16.72; KS=16.29; Eps=0.001347,0.203213300764712
+Sensitivity: no heart rate (sRPE + TD),5,35,SVM,C=1000; KS=30,0.241691842900302
+Sensitivity: no heart rate (sRPE + TD),5,35,AdaBoostM2,NumCycles=233; LearnRate=0.0429; MaxSplits=9,0.220543806646526
+Sensitivity: no heart rate (sRPE + TD),5,35,SVR,C=201.6; KS=21.52; Eps=0.0292,0.212294355017054
+Sensitivity: no heart rate (sRPE + TD),6,36,SVM,C=1000; KS=30,0.234234234234234
+Sensitivity: no heart rate (sRPE + TD),6,36,AdaBoostM2,NumCycles=491; LearnRate=0.001039; MaxSplits=5,0.222222222222222
+Sensitivity: no heart rate (sRPE + TD),6,36,SVR,C=990.4; KS=97.6; Eps=0.0008701,0.183392452465206
+Sensitivity: no heart rate (sRPE + TD),7,38,SVM,C=279.4; KS=3.572,0.234939759036145
+Sensitivity: no heart rate (sRPE + TD),7,38,AdaBoostM2,NumCycles=300; LearnRate=0.3; MaxSplits=2,0.234939759036145
+Sensitivity: no heart rate (sRPE + TD),7,38,SVR,C=492.1; KS=19.59; Eps=0.1324,0.214859516285181
+Sensitivity: no heart rate (sRPE + TD),8,39,SVM,C=867.7; KS=24.76,0.222857142857143
+Sensitivity: no heart rate (sRPE + TD),8,39,AdaBoostM2,NumCycles=408; LearnRate=0.003496; MaxSplits=10,0.228571428571429
+Sensitivity: no heart rate (sRPE + TD),8,39,SVR,C=24.03; KS=14.25; Eps=0.1052,0.199745998667716
+Sensitivity: no heart rate (sRPE + TD),9,41,SVM,C=2.169; KS=2.301,0.217910447761194
+Sensitivity: no heart rate (sRPE + TD),9,41,AdaBoostM2,NumCycles=300; LearnRate=0.3; MaxSplits=2,0.205970149253731
+Sensitivity: no heart rate (sRPE + TD),9,41,SVR,C=799.1; KS=68.36; Eps=0.0008396,0.174211301789782
+Sensitivity: no heart rate (sRPE + TD),10,43,SVM,C=206.3; KS=13.37,0.223529411764706
+Sensitivity: no heart rate (sRPE + TD),10,43,AdaBoostM2,NumCycles=10; LearnRate=0.08069; MaxSplits=6,0.205882352941176
+Sensitivity: no heart rate (sRPE + TD),10,43,SVR,C=972.5; KS=58.36; Eps=0.0007622,0.175567248346213

@@ -1,0 +1,23 @@
+MSOC_brant_test.m (2026-10-03), MATLAB 26.1.0.3346908 (R2026a) Update 5, 03-Oct-2026 01:16:29
+Analytic sample: 372 sessions, 10 athletes; cut points 59.78 and 160.13 AU; classes 149/147/76
+Ordinal logistic regression: deviance 167.297 (v2.3: 167.297); beta = [0.8096 4.85 4.556] (v2.3: 0.810, 4.850, 4.556)
+
+Binary logistic regressions at each cut point (z-scored predictors):
+    Predictor     Ordinal_beta    Beta_Y_gt_Low    SE_Y_gt_Low    Beta_Y_gt_Medium    SE_Y_gt_Medium
+    __________    ____________    _____________    ___________    ________________    ______________
+
+    {'sRPE'  }      0.80957          0.77048         0.37253          0.86619            0.68753    
+    {'%maxHR'}       4.8499           4.0283         0.58159           8.7047             2.1437    
+    {'TD'    }       4.5556            4.458         0.85041           6.7951             1.6259    
+
+
+Brant test of proportional odds (H0: equal slopes at both cut points):
+                   Test                   Wald_chi2    df    p_asymptotic    p_bootstrap
+    __________________________________    _________    __    ____________    ___________
+
+    {'Omnibus (all three predictors)'}      5.5589     3        0.13516        0.11094  
+    {'sRPE'                          }    0.014985     1        0.90257        0.90805  
+    {'%maxHR'                        }      4.4328     1       0.035255        0.01999  
+    {'TD'                            }      1.6222     1        0.20279        0.21839  
+
+Bootstrap: 2000 valid data sets (0 skipped: a category empty; 0 with a glmfit warning), seed 20260925

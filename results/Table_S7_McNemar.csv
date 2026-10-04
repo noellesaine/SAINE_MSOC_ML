@@ -1,0 +1,43 @@
+Strategy,ModelA,ModelB,A_right_B_wrong,A_wrong_B_right,Exact_McNemar_p
+Primary: within-fold MRMR top 3,SVM,AdaBoostM2,19,11,0.200488422065974
+Primary: within-fold MRMR top 3,SVM,OrdinalLogistic,10,7,0.629058837890625
+Primary: within-fold MRMR top 3,SVM,Multinomial,10,7,0.629058837890625
+Primary: within-fold MRMR top 3,SVM,CLMM,10,7,0.629058837890625
+Primary: within-fold MRMR top 3,SVM,LMM_binned,14,12,0.845018982887267
+Primary: within-fold MRMR top 3,SVM,SVR_binned,10,8,0.814529418945312
+Primary: within-fold MRMR top 3,AdaBoostM2,OrdinalLogistic,14,19,0.486850241664797
+Primary: within-fold MRMR top 3,AdaBoostM2,Multinomial,12,17,0.45825831964612
+Primary: within-fold MRMR top 3,AdaBoostM2,CLMM,14,19,0.486850241664797
+Primary: within-fold MRMR top 3,AdaBoostM2,LMM_binned,13,19,0.377085587475449
+Primary: within-fold MRMR top 3,AdaBoostM2,SVR_binned,11,17,0.344928450882435
+Primary: within-fold MRMR top 3,OrdinalLogistic,Multinomial,5,5,1
+Primary: within-fold MRMR top 3,OrdinalLogistic,CLMM,0,0,1
+Primary: within-fold MRMR top 3,OrdinalLogistic,LMM_binned,11,12,1
+Primary: within-fold MRMR top 3,OrdinalLogistic,SVR_binned,6,7,1
+Primary: within-fold MRMR top 3,Multinomial,CLMM,5,5,1
+Primary: within-fold MRMR top 3,Multinomial,LMM_binned,12,13,1
+Primary: within-fold MRMR top 3,Multinomial,SVR_binned,4,5,1
+Primary: within-fold MRMR top 3,CLMM,LMM_binned,11,12,1
+Primary: within-fold MRMR top 3,CLMM,SVR_binned,6,7,1
+Primary: within-fold MRMR top 3,LMM_binned,SVR_binned,10,10,1
+Sensitivity: no heart rate (sRPE + TD),SVM,AdaBoostM2,17,20,0.742829358729068
+Sensitivity: no heart rate (sRPE + TD),SVM,OrdinalLogistic,6,19,0.014633297920227
+Sensitivity: no heart rate (sRPE + TD),SVM,Multinomial,3,17,0.00257682800292969
+Sensitivity: no heart rate (sRPE + TD),SVM,CLMM,7,20,0.0191572904586792
+Sensitivity: no heart rate (sRPE + TD),SVM,LMM_binned,18,30,0.111402891061019
+Sensitivity: no heart rate (sRPE + TD),SVM,SVR_binned,7,27,0.000821395311504604
+Sensitivity: no heart rate (sRPE + TD),AdaBoostM2,OrdinalLogistic,14,24,0.143306654295884
+Sensitivity: no heart rate (sRPE + TD),AdaBoostM2,Multinomial,15,26,0.117275205957412
+Sensitivity: no heart rate (sRPE + TD),AdaBoostM2,CLMM,12,22,0.121449484955519
+Sensitivity: no heart rate (sRPE + TD),AdaBoostM2,LMM_binned,16,25,0.2110235976088
+Sensitivity: no heart rate (sRPE + TD),AdaBoostM2,SVR_binned,9,26,0.00598812056705357
+Sensitivity: no heart rate (sRPE + TD),OrdinalLogistic,Multinomial,6,7,1
+Sensitivity: no heart rate (sRPE + TD),OrdinalLogistic,CLMM,5,5,1
+Sensitivity: no heart rate (sRPE + TD),OrdinalLogistic,LMM_binned,15,14,1
+Sensitivity: no heart rate (sRPE + TD),OrdinalLogistic,SVR_binned,6,13,0.167068481445313
+Sensitivity: no heart rate (sRPE + TD),Multinomial,CLMM,7,6,1
+Sensitivity: no heart rate (sRPE + TD),Multinomial,LMM_binned,18,16,0.864166240440681
+Sensitivity: no heart rate (sRPE + TD),Multinomial,SVR_binned,7,13,0.263175964355469
+Sensitivity: no heart rate (sRPE + TD),CLMM,LMM_binned,11,10,1
+Sensitivity: no heart rate (sRPE + TD),CLMM,SVR_binned,2,9,0.0654296875
+Sensitivity: no heart rate (sRPE + TD),LMM_binned,SVR_binned,4,12,0.0768127441406251

@@ -1,0 +1,471 @@
+MSOC ML pipeline v2.3 (2026-09-29)  |  01-Oct-2026 20:51:45  |  MATLAB 26.1.0.3346908 (R2026a) Update 5
+Seed = 20260925 | Bayesian evaluations per fold = 40 | parallel = 0 | fminunc available = 1
+
+Sheet "ML Sheet (2)": 1794 rows = 69 sessions x 26 rostered athletes
+Rows with the seven analysis variables present: 818; of these, 0 lack Prim_V_Sec, Ath_ID, Prac_o_Gam or Return (excluded by the 11-column test).
+
+Excluded PLI = 0 rows: 3 (all with non-zero sRPE, %HRmax and total distance; check passed) [session-level listing redacted]
+                                  Step                                   Rows    Athletes
+    _________________________________________________________________    ____    ________
+
+    {'Rows in sheet (sessions x rostered athletes)'                 }    1794       26   
+    {'Complete rows (all analysis variables present)'               }     818       23   
+    {'Complete rows, primary athletes'                              }     376       11   
+    {'Excluded primary athletes with < 10 complete sessions (ID 47)'}     375       10   
+    {'Excluded sessions with PLI = 0 (export artifact; n = 3)'      }     372       10   
+
+
+Note: 7 session(s) with PLI < 10 AU retained [session-level listing redacted]
+
+Wellness item ranges: Fatigue 1-7, Stress 1-6, Soreness 1-8
+
+PLI cut points: 59.78 and 160.13 AU (mean +/- 0.5 SD of analytic sample (n = 372; mean = 109.95, SD = 100.35))
+Low <= 59.78 < Medium < 160.13 <= High: Low = 149 (40.1%)  Medium = 147 (39.5%)  High = 76 (20.4%)  
+
+Cut-point sensitivity (each athlete omitted): low 57.59-62.91 AU, high 155.07-164.53 AU; held-out sessions whose category would change: 3 of 372
+
+Analytic sample: 10 athletes, 372 athlete-sessions (321 practice, 51 match); sessions per athlete: median 40 (range 22-41)
+          Variable            Mean       SD      Min      Max 
+    _____________________    ______    ______    ____    _____
+
+    {'sRPE'             }    490.07    219.66     108      936
+    {'Wellness-Fatigue' }    3.6505    1.6472       1        7
+    {'Wellness-Stress'  }    2.7796    1.4046       1        6
+    {'Wellness-Soreness'}    4.0349     1.634       1        8
+    {'%HRmax'           }    63.449    7.9892      43       85
+    {'Total distance'   }      5414    3535.1    1222    16844
+    {'PLI (AU)'         }    109.95    100.35       3      501
+
+
+Associations with continuous PLI:
+          Variable           Spearman_rho    Spearman_p     Spearman_p_Holm    rmcorr_r     rmcorr_df     rmcorr_p      rmcorr_p_Holm
+    _____________________    ____________    ___________    _______________    _________    _________    ___________    _____________
+
+    {'sRPE'             }       0.78926       2.2743e-80       9.0972e-80        0.73892       361        7.1202e-64      2.8481e-63 
+    {'Wellness-Fatigue' }     -0.060164          0.24705          0.49409       -0.32239       361        3.1773e-10       9.532e-10 
+    {'Wellness-Stress'  }      0.029555          0.56988          0.56988      -0.070132       361           0.18246         0.18246 
+    {'Wellness-Soreness'}     -0.074937          0.14916          0.44749       -0.27026       361        1.7049e-07      3.4098e-07 
+    {'%HRmax'           }       0.88467      1.1248e-124      6.7487e-124        0.86395       361       1.3516e-109      6.758e-109 
+    {'Total distance'   }        0.8706      5.0361e-116      2.5181e-115        0.92069       361       1.4219e-149     8.5315e-149 
+
+
+PLI construct analysis (OLS, analytic sample; Dur = session duration, min):
+         Model            R2   
+    ________________    _______
+
+    {'PLI ~ Dur'   }     0.6019
+    {'PLI ~ HR'    }    0.74324
+    {'PLI ~ Dur*HR'}    0.95289
+    {'PLI ~ Dur:HR'}    0.82376
+    {'PLI ~ TRIMP' }     0.9875
+    {'PLI ~ Cardio'}     0.9883
+    {'TD ~ Dur'    }    0.71614
+    {'sRPE ~ Dur'  }    0.61945
+
+
+Descriptive MRMR ranking (full sample; not used for model building):
+    Rank          Variable           MRMR_score
+    ____    _____________________    __________
+
+     1      {'Total distance'   }      0.57163 
+     2      {'%HRmax'           }       1.4287 
+     3      {'sRPE'             }      0.78022 
+     4      {'Wellness-Fatigue' }      0.26866 
+     5      {'Wellness-Soreness'}     0.082039 
+     6      {'Wellness-Stress'  }     0.045379 
+
+
+=== LOAO strategy 1/2: Primary: within-fold MRMR top 3 ===
+  fold  1/10  athlete  8  n = 40  predictors: sRPE, %HRmax, Total distance                  acc: 0.88 0.88 0.85 0.88 0.85 0.90 0.88 
+  fold  2/10  athlete 28  n = 40  predictors: sRPE, %HRmax, Total distance                  acc: 0.93 0.97 0.93 0.95 0.93 0.95 0.95 
+  fold  3/10  athlete 32  n = 40  predictors: sRPE, %HRmax, Total distance                  acc: 0.90 0.88 0.90 0.90 0.90 0.88 0.93 
+[Warning: AdaBoostM2 exits because pseudo-loss from the last hypothesis is not positive.] 
+[> In classreg.learning.modifier/AdaBoostM2/incrementNumIterations (line 143)
+In classreg.learning.ensemble/Ensemble/fitBuiltinEnsemble (line 474)
+In classreg.learning.classif/ClassificationEnsemble (line 31)
+In classreg.learning/FitTemplate/fit (line 277)
+In fitensemble (line 36)
+In fitcensemble (line 41)
+In fitOne', '/MATLAB Drive/MSOC_R3_code_updated/MSOC_ML_Pipeline.m', 1205)" style="font-weight:bold">MSOC_ML_Pipeline>fitOne (line 1205)
+In innerLoss', '/MATLAB Drive/MSOC_R3_code_updated/MSOC_ML_Pipeline.m', 1181)" style="font-weight:bold">MSOC_ML_Pipeline>innerLoss (line 1181)
+In @(x)innerLoss(type,x,X,y,g)', '/MATLAB Drive/MSOC_R3_code_updated/MSOC_ML_Pipeline.m', 1161)" style="font-weight:bold">MSOC_ML_Pipeline>@(x)innerLoss(type,x,X,y,g) (line 1161)
+In BayesianOptimization/callObjNormally (line 13)
+In BayesianOptimization/callObjFcn (line 11)
+In BayesianOptimization/runSerial (line 24)
+In BayesianOptimization/run (line 9)
+In BayesianOptimization (line 64)
+In bayesopt (line 12)
+In tuneAndFit', '/MATLAB Drive/MSOC_R3_code_updated/MSOC_ML_Pipeline.m', 1162)" style="font-weight:bold">MSOC_ML_Pipeline>tuneAndFit (line 1162)
+In MSOC_ML_Pipeline (line 488)] 
+  fold  4/10  athlete 34  n = 41  predictors: sRPE, %HRmax, Total distance                  acc: 0.85 0.71 0.90 0.85 0.90 0.88 0.83 
+  fold  5/10  athlete 35  n = 41  predictors: sRPE, %HRmax, Total distance                  acc: 0.90 0.90 0.83 0.88 0.83 0.88 0.88 
+  fold  6/10  athlete 36  n = 39  predictors: sRPE, %HRmax, Total distance                  acc: 0.97 0.95 0.92 0.95 0.92 0.92 0.92 
+  fold  7/10  athlete 38  n = 40  predictors: sRPE, %HRmax, Total distance                  acc: 0.95 0.93 0.93 0.90 0.93 0.90 0.88 
+  fold  8/10  athlete 39  n = 22  predictors: sRPE, %HRmax, Total distance                  acc: 0.91 0.95 1.00 0.95 1.00 0.91 0.95 
+[Warning: AdaBoostM2 exits because pseudo-loss from the last hypothesis is not positive.] 
+[> In classreg.learning.modifier/AdaBoostM2/incrementNumIterations (line 143)
+In classreg.learning.ensemble/Ensemble/fitBuiltinEnsemble (line 474)
+In classreg.learning.classif/ClassificationEnsemble (line 31)
+In classreg.learning/FitTemplate/fit (line 277)
+In fitensemble (line 36)
+In fitcensemble (line 41)
+In fitOne', '/MATLAB Drive/MSOC_R3_code_updated/MSOC_ML_Pipeline.m', 1205)" style="font-weight:bold">MSOC_ML_Pipeline>fitOne (line 1205)
+In innerLoss', '/MATLAB Drive/MSOC_R3_code_updated/MSOC_ML_Pipeline.m', 1181)" style="font-weight:bold">MSOC_ML_Pipeline>innerLoss (line 1181)
+In @(x)innerLoss(type,x,X,y,g)', '/MATLAB Drive/MSOC_R3_code_updated/MSOC_ML_Pipeline.m', 1161)" style="font-weight:bold">MSOC_ML_Pipeline>@(x)innerLoss(type,x,X,y,g) (line 1161)
+In BayesianOptimization/callObjNormally (line 13)
+In BayesianOptimization/callObjFcn (line 11)
+In BayesianOptimization/runSerial (line 24)
+In BayesianOptimization/run (line 9)
+In BayesianOptimization (line 64)
+In bayesopt (line 12)
+In tuneAndFit', '/MATLAB Drive/MSOC_R3_code_updated/MSOC_ML_Pipeline.m', 1162)" style="font-weight:bold">MSOC_ML_Pipeline>tuneAndFit (line 1162)
+In MSOC_ML_Pipeline (line 488)] 
+  fold  9/10  athlete 41  n = 37  predictors: sRPE, %HRmax, Total distance                  acc: 0.84 0.84 0.81 0.78 0.81 0.81 0.84 
+  fold 10/10  athlete 43  n = 32  predictors: sRPE, %HRmax, Total distance                  acc: 0.94 0.88 0.97 0.97 0.97 1.00 1.00 
+  Selection frequency: sRPE 10/10; Wellness-Fatigue 0/10; Wellness-Stress 0/10; Wellness-Soreness 0/10; %HRmax 10/10; Total distance 10/10;
+
+=== LOAO strategy 2/2: Sensitivity: no heart rate (sRPE + TD) ===
+  fold  1/10  athlete  8  n = 40  predictors: sRPE, Total distance                          acc: 0.75 0.68 0.75 0.75 0.75 0.78 0.75 
+  fold  2/10  athlete 28  n = 40  predictors: sRPE, Total distance                          acc: 0.88 0.78 0.85 0.88 0.88 0.82 0.90 
+  fold  3/10  athlete 32  n = 40  predictors: sRPE, Total distance                          acc: 0.68 0.80 0.78 0.78 0.78 0.75 0.78 
+  fold  4/10  athlete 34  n = 41  predictors: sRPE, Total distance                          acc: 0.71 0.78 0.73 0.76 0.68 0.76 0.78 
+  fold  5/10  athlete 35  n = 41  predictors: sRPE, Total distance                          acc: 0.76 0.73 0.78 0.83 0.83 0.85 0.88 
+  fold  6/10  athlete 36  n = 39  predictors: sRPE, Total distance                          acc: 0.87 0.79 0.87 0.87 0.82 0.72 0.79 
+  fold  7/10  athlete 38  n = 40  predictors: sRPE, Total distance                          acc: 0.78 0.80 0.85 0.85 0.88 0.88 0.88 
+  fold  8/10  athlete 39  n = 22  predictors: sRPE, Total distance                          acc: 0.50 0.68 0.64 0.55 0.64 0.73 0.68 
+  fold  9/10  athlete 41  n = 37  predictors: sRPE, Total distance                          acc: 0.57 0.59 0.62 0.59 0.62 0.62 0.62 
+  fold 10/10  athlete 43  n = 32  predictors: sRPE, Total distance                          acc: 0.75 0.75 0.75 0.75 0.75 0.72 0.75 
+  Selection frequency: sRPE 10/10; Wellness-Fatigue 0/10; Wellness-Stress 0/10; Wellness-Soreness 0/10; %HRmax 0/10; Total distance 10/10;
+
+=== LOAO performance (Table 3) ===
+                     Strategy                            Model           Acc_mean_across_athletes_pct    Acc_SD_across_athletes_pct    Acc_pooled_pct    Balanced_acc_pct    Macro_F1    Low_High_confusions
+    __________________________________________    ___________________    ____________________________    __________________________    ______________    ________________    ________    ___________________
+
+    {'Primary: within-fold MRMR top 3'       }    {'SVM'            }               90.649                         4.2642                  90.591             90.826         0.91135              0         
+    {'Primary: within-fold MRMR top 3'       }    {'AdaBoostM2'     }               88.759                         7.6688                  88.441             88.594         0.88589              0         
+    {'Primary: within-fold MRMR top 3'       }    {'OrdinalLogistic'}               90.343                         5.9493                  89.785             90.152         0.90358              0         
+    {'Primary: within-fold MRMR top 3'       }    {'Multinomial'    }               90.125                         5.7077                  89.785             90.146         0.90234              0         
+    {'Primary: within-fold MRMR top 3'       }    {'CLMM'           }               90.343                         5.9493                  89.785             90.152         0.90358              0         
+    {'Primary: within-fold MRMR top 3'       }    {'LMM_binned'     }               90.241                         5.0112                  90.054             90.805         0.90596              0         
+    {'Primary: within-fold MRMR top 3'       }    {'SVR_binned'     }               90.478                         5.4776                  90.054             90.158         0.90559              0         
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'SVM'            }               72.278                         11.876                  73.387             70.621         0.72035              3         
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'AdaBoostM2'     }               73.835                         6.8288                  74.194             73.859         0.74597              3         
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'OrdinalLogistic'}                76.17                         8.4819                  76.882             76.111         0.76821              2         
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'Multinomial'    }               75.972                         11.178                  77.151             75.279         0.76707              2         
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'CLMM'           }               76.157                         9.1703                  76.882             76.329         0.76916              2         
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'LMM_binned'     }               76.203                         7.4692                  76.613             76.547         0.76663              3         
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'SVR_binned'     }               78.068                         8.8068                  78.763             78.128         0.78595              3         
+
+
+=== Continuous PLI prediction (LOAO) ===
+                     Strategy                         Model         RMSE_AU    MAE_AU      R2   
+    __________________________________________    ______________    _______    ______    _______
+
+    {'Primary: within-fold MRMR top 3'       }    {'LMM_binned'}    19.157     12.861    0.96346
+    {'Primary: within-fold MRMR top 3'       }    {'SVR_binned'}    18.657     12.221    0.96534
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'LMM_binned'}    47.011     32.894    0.77994
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'SVR_binned'}    47.041     32.285    0.77965
+
+
+=== Paired exact McNemar tests ===
+                     Strategy                           ModelA                 ModelB           A_right_B_wrong    A_wrong_B_right    Exact_McNemar_p
+    __________________________________________    ___________________    ___________________    _______________    _______________    _______________
+
+    {'Primary: within-fold MRMR top 3'       }    {'SVM'            }    {'AdaBoostM2'     }          19                 11                0.20049   
+    {'Primary: within-fold MRMR top 3'       }    {'SVM'            }    {'OrdinalLogistic'}          10                  7                0.62906   
+    {'Primary: within-fold MRMR top 3'       }    {'SVM'            }    {'Multinomial'    }          10                  7                0.62906   
+    {'Primary: within-fold MRMR top 3'       }    {'SVM'            }    {'CLMM'           }          10                  7                0.62906   
+    {'Primary: within-fold MRMR top 3'       }    {'SVM'            }    {'LMM_binned'     }          14                 12                0.84502   
+    {'Primary: within-fold MRMR top 3'       }    {'SVM'            }    {'SVR_binned'     }          10                  8                0.81453   
+    {'Primary: within-fold MRMR top 3'       }    {'AdaBoostM2'     }    {'OrdinalLogistic'}          14                 19                0.48685   
+    {'Primary: within-fold MRMR top 3'       }    {'AdaBoostM2'     }    {'Multinomial'    }          12                 17                0.45826   
+    {'Primary: within-fold MRMR top 3'       }    {'AdaBoostM2'     }    {'CLMM'           }          14                 19                0.48685   
+    {'Primary: within-fold MRMR top 3'       }    {'AdaBoostM2'     }    {'LMM_binned'     }          13                 19                0.37709   
+    {'Primary: within-fold MRMR top 3'       }    {'AdaBoostM2'     }    {'SVR_binned'     }          11                 17                0.34493   
+    {'Primary: within-fold MRMR top 3'       }    {'OrdinalLogistic'}    {'Multinomial'    }           5                  5                      1   
+    {'Primary: within-fold MRMR top 3'       }    {'OrdinalLogistic'}    {'CLMM'           }           0                  0                      1   
+    {'Primary: within-fold MRMR top 3'       }    {'OrdinalLogistic'}    {'LMM_binned'     }          11                 12                      1   
+    {'Primary: within-fold MRMR top 3'       }    {'OrdinalLogistic'}    {'SVR_binned'     }           6                  7                      1   
+    {'Primary: within-fold MRMR top 3'       }    {'Multinomial'    }    {'CLMM'           }           5                  5                      1   
+    {'Primary: within-fold MRMR top 3'       }    {'Multinomial'    }    {'LMM_binned'     }          12                 13                      1   
+    {'Primary: within-fold MRMR top 3'       }    {'Multinomial'    }    {'SVR_binned'     }           4                  5                      1   
+    {'Primary: within-fold MRMR top 3'       }    {'CLMM'           }    {'LMM_binned'     }          11                 12                      1   
+    {'Primary: within-fold MRMR top 3'       }    {'CLMM'           }    {'SVR_binned'     }           6                  7                      1   
+    {'Primary: within-fold MRMR top 3'       }    {'LMM_binned'     }    {'SVR_binned'     }          10                 10                      1   
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'SVM'            }    {'AdaBoostM2'     }          17                 20                0.74283   
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'SVM'            }    {'OrdinalLogistic'}           6                 19               0.014633   
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'SVM'            }    {'Multinomial'    }           3                 17              0.0025768   
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'SVM'            }    {'CLMM'           }           7                 20               0.019157   
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'SVM'            }    {'LMM_binned'     }          18                 30                 0.1114   
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'SVM'            }    {'SVR_binned'     }           7                 27              0.0008214   
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'AdaBoostM2'     }    {'OrdinalLogistic'}          14                 24                0.14331   
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'AdaBoostM2'     }    {'Multinomial'    }          15                 26                0.11728   
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'AdaBoostM2'     }    {'CLMM'           }          12                 22                0.12145   
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'AdaBoostM2'     }    {'LMM_binned'     }          16                 25                0.21102   
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'AdaBoostM2'     }    {'SVR_binned'     }           9                 26              0.0059881   
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'OrdinalLogistic'}    {'Multinomial'    }           6                  7                      1   
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'OrdinalLogistic'}    {'CLMM'           }           5                  5                      1   
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'OrdinalLogistic'}    {'LMM_binned'     }          15                 14                      1   
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'OrdinalLogistic'}    {'SVR_binned'     }           6                 13                0.16707   
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'Multinomial'    }    {'CLMM'           }           7                  6                      1   
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'Multinomial'    }    {'LMM_binned'     }          18                 16                0.86417   
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'Multinomial'    }    {'SVR_binned'     }           7                 13                0.26318   
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'CLMM'           }    {'LMM_binned'     }          11                 10                      1   
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'CLMM'           }    {'SVR_binned'     }           2                  9                0.06543   
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'LMM_binned'     }    {'SVR_binned'     }           4                 12               0.076813   
+
+
+=== Within-fold selection frequency ===
+          Variable           S1_folds_selected    S2_folds_selected
+    _____________________    _________________    _________________
+
+    {'sRPE'             }           10                   10        
+    {'Wellness-Fatigue' }            0                    0        
+    {'Wellness-Stress'  }            0                    0        
+    {'Wellness-Soreness'}            0                    0        
+    {'%HRmax'           }           10                    0        
+    {'Total distance'   }           10                   10        
+
+
+=== Hyperparameters and inner-loop loss by fold ===
+                     Strategy                     Fold    HeldOutAthlete        Model                           Hyperparameters                      Inner_LOAO_loss
+    __________________________________________    ____    ______________    ______________    ___________________________________________________    _______________
+
+    {'Primary: within-fold MRMR top 3'       }      1            8          {'SVM'       }    {'C=47.47; KS=3.459'                              }       0.084337    
+    {'Primary: within-fold MRMR top 3'       }      1            8          {'AdaBoostM2'}    {'NumCycles=33; LearnRate=0.9913; MaxSplits=19'   }       0.096386    
+    {'Primary: within-fold MRMR top 3'       }      1            8          {'SVR'       }    {'C=172.7; KS=12.83; Eps=0.004513'                }       0.033663    
+    {'Primary: within-fold MRMR top 3'       }      2           28          {'SVM'       }    {'C=152; KS=5.089'                                }       0.099398    
+    {'Primary: within-fold MRMR top 3'       }      2           28          {'AdaBoostM2'}    {'NumCycles=15; LearnRate=0.9414; MaxSplits=9'    }        0.10241    
+    {'Primary: within-fold MRMR top 3'       }      2           28          {'SVR'       }    {'C=544.9; KS=13.31; Eps=0.03694'                 }       0.034201    
+    {'Primary: within-fold MRMR top 3'       }      3           32          {'SVM'       }    {'C=118.2; KS=3.914'                              }       0.099398    
+    {'Primary: within-fold MRMR top 3'       }      3           32          {'AdaBoostM2'}    {'NumCycles=23; LearnRate=0.9805; MaxSplits=9'    }       0.096386    
+    {'Primary: within-fold MRMR top 3'       }      3           32          {'SVR'       }    {'C=206.7; KS=9.823; Eps=0.0776'                  }       0.034388    
+    {'Primary: within-fold MRMR top 3'       }      4           34          {'SVM'       }    {'C=10; KS=3'                                     }       0.087613    
+    {'Primary: within-fold MRMR top 3'       }      4           34          {'AdaBoostM2'}    {'NumCycles=100; LearnRate=0.9389; MaxSplits=7'   }       0.090634    
+    {'Primary: within-fold MRMR top 3'       }      4           34          {'SVR'       }    {'C=128.1; KS=7.205; Eps=0.1137'                  }       0.029988    
+    {'Primary: within-fold MRMR top 3'       }      5           35          {'SVM'       }    {'C=994.7; KS=8.479'                              }       0.090634    
+    {'Primary: within-fold MRMR top 3'       }      5           35          {'AdaBoostM2'}    {'NumCycles=480; LearnRate=0.1189; MaxSplits=7'   }       0.096677    
+    {'Primary: within-fold MRMR top 3'       }      5           35          {'SVR'       }    {'C=100; KS=10; Eps=0.07426'                      }       0.030175    
+    {'Primary: within-fold MRMR top 3'       }      6           36          {'SVM'       }    {'C=10; KS=3'                                     }         0.1021    
+    {'Primary: within-fold MRMR top 3'       }      6           36          {'AdaBoostM2'}    {'NumCycles=14; LearnRate=0.9963; MaxSplits=19'   }        0.10811    
+    {'Primary: within-fold MRMR top 3'       }      6           36          {'SVR'       }    {'C=100; KS=10; Eps=0.0765'                       }       0.033651    
+    {'Primary: within-fold MRMR top 3'       }      7           38          {'SVM'       }    {'C=10; KS=3'                                     }       0.099398    
+    {'Primary: within-fold MRMR top 3'       }      7           38          {'AdaBoostM2'}    {'NumCycles=300; LearnRate=0.3; MaxSplits=10'     }        0.10542    
+    {'Primary: within-fold MRMR top 3'       }      7           38          {'SVR'       }    {'C=899.8; KS=23.15; Eps=0.1014'                  }        0.03706    
+    {'Primary: within-fold MRMR top 3'       }      8           39          {'SVM'       }    {'C=932.4; KS=7.419'                              }       0.082857    
+    {'Primary: within-fold MRMR top 3'       }      8           39          {'AdaBoostM2'}    {'NumCycles=13; LearnRate=0.9136; MaxSplits=15'   }       0.082857    
+    {'Primary: within-fold MRMR top 3'       }      8           39          {'SVR'       }    {'C=274.7; KS=10.26; Eps=0.07392'                 }       0.030858    
+    {'Primary: within-fold MRMR top 3'       }      9           41          {'SVM'       }    {'C=248.2; KS=5.108'                              }       0.083582    
+    {'Primary: within-fold MRMR top 3'       }      9           41          {'AdaBoostM2'}    {'NumCycles=491; LearnRate=0.05193; MaxSplits=8'  }       0.098507    
+    {'Primary: within-fold MRMR top 3'       }      9           41          {'SVR'       }    {'C=181.3; KS=12.61; Eps=0.006229'                }       0.030667    
+    {'Primary: within-fold MRMR top 3'       }     10           43          {'SVM'       }    {'C=16.28; KS=3.427'                              }       0.094118    
+    {'Primary: within-fold MRMR top 3'       }     10           43          {'AdaBoostM2'}    {'NumCycles=116; LearnRate=0.1921; MaxSplits=20'  }       0.088235    
+    {'Primary: within-fold MRMR top 3'       }     10           43          {'SVR'       }    {'C=204.9; KS=14.92; Eps=0.00193'                 }       0.033375    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      1            8          {'SVM'       }    {'C=1.763; KS=0.55'                               }        0.23193    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      1            8          {'AdaBoostM2'}    {'NumCycles=237; LearnRate=0.01839; MaxSplits=2'  }        0.22289    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      1            8          {'SVR'       }    {'C=48.66; KS=26.08; Eps=0.1361'                  }        0.19313    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      2           28          {'SVM'       }    {'C=745.7; KS=35.22'                              }           0.25    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      2           28          {'AdaBoostM2'}    {'NumCycles=10; LearnRate=0.02132; MaxSplits=3'   }        0.22289    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      2           28          {'SVR'       }    {'C=24.19; KS=24.47; Eps=0.003884'                }        0.18749    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      3           32          {'SVM'       }    {'C=0.1; KS=3'                                    }        0.24096    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      3           32          {'AdaBoostM2'}    {'NumCycles=195; LearnRate=0.9127; MaxSplits=1'   }        0.24096    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      3           32          {'SVR'       }    {'C=4.548; KS=5.277; Eps=0.003461'                }        0.19911    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      4           34          {'SVM'       }    {'C=148; KS=8.422'                                }        0.24169    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      4           34          {'AdaBoostM2'}    {'NumCycles=30; LearnRate=0.008378; MaxSplits=2'  }         0.1994    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      4           34          {'SVR'       }    {'C=16.72; KS=16.29; Eps=0.001347'                }        0.20321    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      5           35          {'SVM'       }    {'C=1000; KS=30'                                  }        0.24169    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      5           35          {'AdaBoostM2'}    {'NumCycles=233; LearnRate=0.0429; MaxSplits=9'   }        0.22054    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      5           35          {'SVR'       }    {'C=201.6; KS=21.52; Eps=0.0292'                  }        0.21229    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      6           36          {'SVM'       }    {'C=1000; KS=30'                                  }        0.23423    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      6           36          {'AdaBoostM2'}    {'NumCycles=491; LearnRate=0.001039; MaxSplits=5' }        0.22222    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      6           36          {'SVR'       }    {'C=990.4; KS=97.6; Eps=0.0008701'                }        0.18339    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      7           38          {'SVM'       }    {'C=279.4; KS=3.572'                              }        0.23494    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      7           38          {'AdaBoostM2'}    {'NumCycles=300; LearnRate=0.3; MaxSplits=2'      }        0.23494    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      7           38          {'SVR'       }    {'C=492.1; KS=19.59; Eps=0.1324'                  }        0.21486    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      8           39          {'SVM'       }    {'C=867.7; KS=24.76'                              }        0.22286    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      8           39          {'AdaBoostM2'}    {'NumCycles=408; LearnRate=0.003496; MaxSplits=10'}        0.22857    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      8           39          {'SVR'       }    {'C=24.03; KS=14.25; Eps=0.1052'                  }        0.19975    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      9           41          {'SVM'       }    {'C=2.169; KS=2.301'                              }        0.21791    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      9           41          {'AdaBoostM2'}    {'NumCycles=300; LearnRate=0.3; MaxSplits=2'      }        0.20597    
+    {'Sensitivity: no heart rate (sRPE + TD)'}      9           41          {'SVR'       }    {'C=799.1; KS=68.36; Eps=0.0008396'               }        0.17421    
+    {'Sensitivity: no heart rate (sRPE + TD)'}     10           43          {'SVM'       }    {'C=206.3; KS=13.37'                              }        0.22353    
+    {'Sensitivity: no heart rate (sRPE + TD)'}     10           43          {'AdaBoostM2'}    {'NumCycles=10; LearnRate=0.08069; MaxSplits=6'   }        0.20588    
+    {'Sensitivity: no heart rate (sRPE + TD)'}     10           43          {'SVR'       }    {'C=972.5; KS=58.36; Eps=0.0007622'               }        0.17557    
+
+
+=== Functional-form sensitivity: LMM with vs without interaction terms (primary strategy) ===
+           Model            Acc_mean_across_athletes_pct    Acc_SD_across_athletes_pct    Acc_pooled_pct    Balanced_acc_pct    Macro_F1    Low_High_confusions    RMSE_AU    MAE_AU      R2       McNemar_interactions_right_additive_wrong    McNemar_interactions_wrong_additive_right    McNemar_p
+    ____________________    ____________________________    __________________________    ______________    ________________    ________    ___________________    _______    ______    _______    _________________________________________    _________________________________________    _________
+
+    {'LMM_interactions'}               90.241                         5.0112                  90.054             90.805         0.90596              0             19.157     12.861    0.96346                       15                                           12                         0.70111 
+    {'LMM_additive'    }               89.759                         5.5839                  89.247             90.564         0.89668              0             27.875     19.796    0.92263                       15                                           12                         0.70111 
+
+Exact McNemar, interactions vs additive: 15 vs 12 discordant, p = 0.701
+
+=== Misclassified sessions: distance to the nearest cut point (primary strategy) ===
+           Model           Misclassified    Within_20_AU_of_cut_point    Pct_within_20_AU    Median_distance_AU    Max_distance_AU
+    ___________________    _____________    _________________________    ________________    __________________    _______________
+
+    {'SVM'            }         35                     30                     85.714               8.7772              97.874     
+    {'AdaBoostM2'     }         43                     31                     72.093               8.7772              58.874     
+    {'OrdinalLogistic'}         38                     30                     78.947               8.9516              97.874     
+    {'Multinomial'    }         38                     30                     78.947               8.7772              97.874     
+    {'CLMM'           }         38                     30                     78.947               8.9516              97.874     
+    {'LMM_binned'     }         37                     31                     83.784               8.2228              39.874     
+    {'SVR_binned'     }         37                     29                     78.378               8.2228              97.874     
+
+
+=== Pairwise accuracy differences: cluster bootstrap (days, athletes) and sign-flip tests ===
+                     Strategy                           ModelA                 ModelB           Diff_pooled_acc_pct    Day_boot_CI_low    Day_boot_CI_high    Day_signflip_p    Athlete_boot_CI_low    Athlete_boot_CI_high    Athlete_signflip_p
+    __________________________________________    ___________________    ___________________    ___________________    _______________    ________________    ______________    ___________________    ____________________    __________________
+
+    {'Primary: within-fold MRMR top 3'       }    {'SVM'            }    {'AdaBoostM2'     }           2.1505             -0.85471              5.3254           0.25325             -0.83916                 5.7895                 0.39062     
+    {'Primary: within-fold MRMR top 3'       }    {'SVM'            }    {'OrdinalLogistic'}          0.80645              -1.5365                 3.2           0.66945              -1.9284                 3.1915                 0.70312     
+    {'Primary: within-fold MRMR top 3'       }    {'SVM'            }    {'Multinomial'    }          0.80645              -1.0681              2.7167           0.57915              -1.0899                 2.5773                 0.59375     
+    {'Primary: within-fold MRMR top 3'       }    {'SVM'            }    {'CLMM'           }          0.80645              -1.5894              3.2532            0.6663              -1.9126                   3.25                 0.70312     
+    {'Primary: within-fold MRMR top 3'       }    {'SVM'            }    {'LMM_binned'     }          0.53763              -2.4903               3.521           0.86265              -1.7118                 2.6316                 0.82031     
+    {'Primary: within-fold MRMR top 3'       }    {'SVM'            }    {'SVR_binned'     }          0.53763              -1.6973              2.7708            0.8139              -2.0057                 2.9925                 0.84375     
+    {'Primary: within-fold MRMR top 3'       }    {'AdaBoostM2'     }    {'OrdinalLogistic'}          -1.3441              -4.5961              1.9865            0.5305              -6.9638                 2.9101                 0.77344     
+    {'Primary: within-fold MRMR top 3'       }    {'AdaBoostM2'     }    {'Multinomial'    }          -1.3441              -4.4116              1.7334            0.5077              -5.3119                 1.8568                 0.67188     
+    {'Primary: within-fold MRMR top 3'       }    {'AdaBoostM2'     }    {'CLMM'           }          -1.3441              -4.5882              1.9581           0.53135              -6.7962                 2.8571                 0.77344     
+    {'Primary: within-fold MRMR top 3'       }    {'AdaBoostM2'     }    {'LMM_binned'     }          -1.6129              -5.2486              2.1489           0.48915              -6.4033                 2.1366                 0.60938     
+    {'Primary: within-fold MRMR top 3'       }    {'AdaBoostM2'     }    {'SVR_binned'     }          -1.6129              -4.8324              1.4327            0.4276              -5.4959                 1.7442                 0.51562     
+    {'Primary: within-fold MRMR top 3'       }    {'OrdinalLogistic'}    {'Multinomial'    }                0              -1.3055              1.3316                 1              -1.8817                 2.0202                       1     
+    {'Primary: within-fold MRMR top 3'       }    {'OrdinalLogistic'}    {'CLMM'           }                0                    0                   0                 1                    0                      0                       1     
+    {'Primary: within-fold MRMR top 3'       }    {'OrdinalLogistic'}    {'LMM_binned'     }         -0.26882              -2.4603              1.8919                 1              -2.3499                  1.949                       1     
+    {'Primary: within-fold MRMR top 3'       }    {'OrdinalLogistic'}    {'SVR_binned'     }         -0.26882              -1.8543              1.3072                 1              -2.5707                 2.4032                       1     
+    {'Primary: within-fold MRMR top 3'       }    {'Multinomial'    }    {'CLMM'           }                0              -1.3055              1.3193                 1              -2.0634                 1.8717                       1     
+    {'Primary: within-fold MRMR top 3'       }    {'Multinomial'    }    {'LMM_binned'     }         -0.26882              -2.7701              2.1053                 1              -1.5748                 1.1561                       1     
+    {'Primary: within-fold MRMR top 3'       }    {'Multinomial'    }    {'SVR_binned'     }         -0.26882              -1.6901              1.0929                 1              -1.9231                 1.2531                       1     
+    {'Primary: within-fold MRMR top 3'       }    {'CLMM'           }    {'LMM_binned'     }         -0.26882                 -2.5              1.9178                 1              -2.3591                 1.9391                       1     
+    {'Primary: within-fold MRMR top 3'       }    {'CLMM'           }    {'SVR_binned'     }         -0.26882              -1.8667              1.3021                 1               -2.551                 2.3936                       1     
+    {'Primary: within-fold MRMR top 3'       }    {'LMM_binned'     }    {'SVR_binned'     }                0                -2.52              2.4012                 1              -1.8809                 1.7588                       1     
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'SVM'            }    {'AdaBoostM2'     }         -0.80645              -4.4296              2.1888           0.76285              -5.9507                 3.8728                 0.82422     
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'SVM'            }    {'OrdinalLogistic'}          -3.4946              -6.7032            -0.54795           0.04745              -6.3097                -1.0178                  0.0625     
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'SVM'            }    {'Multinomial'    }          -3.7634              -6.4421             -1.4844            0.0037              -6.0686                -1.5484                 0.03125     
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'SVM'            }    {'CLMM'           }          -3.4946              -6.8091             -0.5772           0.04615               -7.012                      0                   0.125     
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'SVM'            }    {'LMM_binned'     }          -3.2258              -7.4499              0.5698           0.16315              -8.4046                 2.5349                 0.32422     
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'SVM'            }    {'SVR_binned'     }          -5.3763              -8.8607             -2.3739            0.0023              -9.2511                -1.2739                0.046875     
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'AdaBoostM2'     }    {'OrdinalLogistic'}          -2.6882              -5.7332             0.25674            0.1227              -5.4054                 0.3096                 0.17188     
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'AdaBoostM2'     }    {'Multinomial'    }           -2.957              -6.4935             0.48841            0.1376              -6.3291                 0.9375                 0.22656     
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'AdaBoostM2'     }    {'CLMM'           }          -2.6882              -5.8659                   0            0.1337              -6.3514                  1.581                  0.3125     
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'AdaBoostM2'     }    {'LMM_binned'     }          -2.4194              -6.5574              1.2739           0.31725              -6.4085                  1.626                 0.36328     
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'AdaBoostM2'     }    {'SVR_binned'     }          -4.5699              -8.7464            -0.80321            0.0404              -8.3016                 -1.054                 0.09375     
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'OrdinalLogistic'}    {'Multinomial'    }         -0.26882              -2.3136               2.046                 1              -1.8182                 1.5723                       1     
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'OrdinalLogistic'}    {'CLMM'           }                0              -1.3193              1.2887                 1              -1.8813                 2.0356                       1     
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'OrdinalLogistic'}    {'LMM_binned'     }          0.26882              -2.2339              2.7064                 1              -3.2043                 4.6154                       1     
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'OrdinalLogistic'}    {'SVR_binned'     }          -1.8817              -4.1547              0.2649              0.17              -4.7739                 1.0624                 0.34375     
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'Multinomial'    }    {'CLMM'           }          0.26882              -1.8667              1.9337                 1              -1.9886                 2.5974                       1     
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'Multinomial'    }    {'LMM_binned'     }          0.53763              -2.4129              3.3659            0.8595              -3.4437                 4.8493                 0.89844     
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'Multinomial'    }    {'SVR_binned'     }          -1.6129              -3.6291             0.50569            0.2194              -4.1667                 1.0256                 0.34375     
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'CLMM'           }    {'LMM_binned'     }          0.26882              -1.7834              2.3256                 1              -2.9762                 3.5064                       1     
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'CLMM'           }    {'SVR_binned'     }          -1.8817              -3.7838            -0.24814           0.09075              -4.2667                      0                    0.25     
+    {'Sensitivity: no heart rate (sRPE + TD)'}    {'LMM_binned'     }    {'SVR_binned'     }          -2.1505              -4.7679             0.27778           0.15295              -4.2607                      0                 0.17188     
+
+
+Inner-split MRMR agreement with the outer-fold selection: 90 of 90 inner splits
+
+=== Ordinal model with three vs all six candidate predictors (LOAO) ===
+             Model              Acc_mean_across_athletes_pct    Acc_SD_across_athletes_pct    Acc_pooled_pct    Balanced_acc_pct    Macro_F1    Low_High_confusions    McNemar_3_right_6_wrong    McNemar_3_wrong_6_right    McNemar_p    Day_boot_CI_low    Day_boot_CI_high    Day_signflip_p
+    ________________________    ____________________________    __________________________    ______________    ________________    ________    ___________________    _______________________    _______________________    _________    _______________    ________________    ______________
+
+    {'Ordinal_3_predictors'}               90.343                         5.9493                  89.785             90.152         0.90358              0                        4                          7                0.54883         -2.5568            0.87719             0.5506    
+    {'Ordinal_6_predictors'}               91.094                         5.5725                  90.591             90.823         0.91127              0                        4                          7                0.54883         -2.5568            0.87719             0.5506    
+
+
+=== Leave-one-day-out (52 days), deterministic models ===
+           Model           Acc_pooled_pct    Acc_mean_across_days_pct    Acc_SD_across_days_pct    Balanced_acc_pct    Macro_F1    Low_High_confusions
+    ___________________    ______________    ________________________    ______________________    ________________    ________    ___________________
+
+    {'OrdinalLogistic'}        90.054                 90.909                     12.614                 90.587         0.90684              0         
+    {'Multinomial'    }        88.978                 90.036                      13.01                 89.465         0.89336              0         
+    {'CLMM'           }        90.054                 90.909                     12.614                 90.587         0.90684              0         
+    {'LMM_binned'     }        90.591                 91.852                     12.244                 91.464         0.91139              0         
+
+LMM continuous PLI under leave-one-day-out: RMSE 18.9 AU, MAE 12.8 AU, R2 0.964
+Leave-one-day-out MRMR selection frequency (days): sRPE 52/52; Wellness-Fatigue 0/52; Wellness-Stress 0/52; Wellness-Soreness 0/52; %HRmax 52/52; Total distance 52/52
+[Warning: Maximum likelihood estimation did not converge.  Iteration limit
+exceeded.  You may need to merge categories to increase observed counts.] 
+[> In ordinalFit', '/MATLAB/toolbox/stats/stats/mnrfit.m', 329)" style="font-weight:bold">mnrfit>ordinalFit (line 329)
+In mnrfit (line 123)
+In MSOC_ML_Pipeline (line 806)] 
+
+Non-parallel-slopes cumulative-logit model: log-likelihood -79.468, exitflag 5, max |gradient| 2.61e-06, sessions with a negative fitted probability: 17
+Proportional-odds LR: mnrfit alternative (iteration limit) 8.36; converged alternative 8.36
+
+Ordinal logistic regression (z-scored predictors; beta > 0 = higher category):
+              Term               Estimate      SE           p     
+    _________________________    ________    _______    __________
+
+    {'theta_1 (Low|Medium)' }    -3.8258     0.51394    9.7619e-14
+    {'theta_2 (Medium|High)'}     6.3273     0.71156    5.9941e-19
+    {'sRPE'                 }    0.80957       0.324      0.012467
+    {'%HRmax'               }     4.8499     0.56447    8.5507e-18
+    {'Total distance'       }     4.5556     0.61932    1.8986e-13
+
+Proportional-odds test (parallel vs non-parallel slopes, converged fit): LR = 8.36, df = 3, p = 0.039
+
+Check: custom ordinal likelihood vs mnrfit, max |difference| = 1.78e-15 (should be < 1e-3)
+Check: -2 log-likelihood custom = 167.297, mnrfit deviance = 167.297
+
+Ordinal mixed model (random athlete intercept, 25-node Gauss-Hermite):
+              Term                Estimate       SE           z             p     
+    _________________________    __________    _______    __________    __________
+
+    {'theta_1 (Low|Medium)' }       -3.8258    0.51385       -7.4455    9.6603e-14
+    {'theta_2 (Medium|High)'}        6.3273    0.71355        8.8674    7.4899e-19
+    {'sRPE'                 }       0.80959    0.32415        2.4976      0.012505
+    {'%HRmax'               }        4.8498    0.56743         8.547    1.2631e-17
+    {'Total distance'       }        4.5555     0.6197        7.3512    1.9646e-13
+    {'SD athlete intercept' }    0.00014557    0.40777    0.00035699           0.5
+
+Random-intercept LR test vs fixed-effects ordinal model: LR = 0.00, p = 0.500 (boundary-corrected)
+
+Linear mixed model, continuous PLI (crossed athlete and session intercepts):
+
+Linear mixed-effects model fit by REML
+
+Model information:
+    Number of observations             372
+    Fixed effects coefficients           7
+    Random effects coefficients         62
+    Covariance parameters                3
+
+Formula:
+    PLI ~ 1 + sRPE*HRpct + sRPE*TD + HRpct*TD + (1 | Ath) + (1 | Session)
+
+Model fit statistics:
+    AIC     BIC     LogLikelihood    Deviance
+    3126    3165    -1553            3106    
+
+Fixed effects coefficients (95% CIs):
+    Name                   Estimate    SE        tStat     DF     pValue         Lower       Upper 
+    {'(Intercept)'}         107.92     3.1873    33.858    365    1.1568e-114      101.65    114.18
+    {'sRPE'       }         4.3754     2.2107    1.9792    365       0.048546    0.028086    8.7226
+    {'HRpct'      }         47.224     1.3245    35.654    365    5.8393e-121      44.619    49.828
+    {'TD'         }         42.567     2.9778    14.295    365     4.0167e-37      36.712    48.423
+    {'sRPE:HRpct' }         13.331     1.4325    9.3061    365     1.2579e-18      10.514    16.147
+    {'sRPE:TD'    }        -15.691     1.6634    -9.433    365     4.7707e-19     -18.962    -12.42
+    {'HRpct:TD'   }         12.111     1.3257    9.1353    365     4.5785e-18      9.5039    14.718
+
+Random effects covariance parameters (95% CIs):
+Group: Ath (10 Levels)
+    Name1                  Name2                  Type           Estimate    Lower     Upper 
+    {'(Intercept)'}        {'(Intercept)'}        {'std'}        5.8062      3.3474    10.071
+
+Group: Session (52 Levels)
+    Name1                  Name2                  Type           Estimate    Lower    Upper 
+    {'(Intercept)'}        {'(Intercept)'}        {'std'}        15.712      10.93    22.586
+
+Group: Error
+    Name               Estimate    Lower     Upper 
+    {'Res Std'}        13.595      12.451    14.844
+
+              Model              Var_athlete    Var_session    Var_residual    ICC_athlete    ICC_session
+    _________________________    ___________    ___________    ____________    ___________    ___________
+
+    {'Null (intercept only)'}      465.35         9653.2          2110.7        0.038052        0.78935  
+    {'With predictors'      }      33.712         246.87          184.82        0.072437        0.53044  
+
+
+Done in 18.8 min. Outputs in /MATLAB Drive/MSOC_R3_code_updated/MSOC_results
